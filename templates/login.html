@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="../static/custom.css" type="text/css">
+
+
+<body>
+<div class="container">
+	<nav>
+		<ul>
+			<li><a href="/home">Home</a></li>
+		</ul>
+	</nav>
+</div>
+<form action="/do_login" method="POST">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Log In</h1>
+				<hr>
+			</div>
+			<div class="login-form">
+				<div class="control-group">
+					<input type="text" class="login-field" value="" placeholder="Enter Username" name="username">
+					<label class="login-field-icon fui-user" for="login-name"></label>
+			</div>
+			<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="Enter Password" name="password">
+				<label class="login-field-icon fui-lock" for="login-pass"></label></div>
+				<input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
+				<hr>
+				<p>Don't have account?<a href="/signup"> Sign Up</a></p>
+			</div>
+		</div>
+	</div>
+</form>
+</body>
