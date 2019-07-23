@@ -1,10 +1,14 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
 import os
+from flask import g
+import sqlite3
+
+DATABASE = 'userdb.db'
 
 app = Flask(__name__)
 
-@app.route('/home')
+@app.route('/')
 def home():
 	if not session.get('logged_in'):
 		return render_template('home.html')
