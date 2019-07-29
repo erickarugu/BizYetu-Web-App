@@ -1,2 +1,3 @@
 # Ekk_App
-A sample SignUp-Log-In Flask application. Kamilimu Web Track Challenge.
+
+Teen Code Intermediate Flask Application Project
