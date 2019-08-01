@@ -1,85 +1,81 @@
-* {
-box-sizing: border-box;
-}
-
-*:focus {
-outline: none;
-}
 body {
-font-family: Arial;
-background-color: #3498DB;
-padding: 50px;
-text-align: center;
-}
-.login {
-margin: 20px auto;
-width: 40%;
-}
-.login-screen {
-background-color: #FFF;
-padding: 20px;
-border-radius: 5px
-}
-.signup-screen {
-background-color: #20cc5f;
-padding: 20px;
-border-radius: 5px
-}
-.app-title {
-text-align: center;
-color: #777;
+  background: #f2ffb6;
+  color: #333333;
+  margin-top: 5rem;
 }
 
-.login-form {
-text-align: center;
-margin: 20px 0px 20px 0px;
-}
-.control-group {
-margin-bottom: 10px;
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
 }
 
-input {
-text-align: center;
-background-color: #ECF0F1;
-border: 2px solid transparent;
-border-radius: 3px;
-font-size: 16px;
-font-weight: 200;
-padding: 10px 0;
-width: 40vh;
-transition: border .5s;
-color: green;
+.bg-steel {
+  background-color: #323ab1;
+  color: green !important;
 }
 
-input:focus {
-border: 2px solid #3498DB;
-box-shadow: none;
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
 }
 
-.btn {
-border: 2px solid transparent;
-background: #3498DB;
-color: #ffffff;
-font-size: 16px;
-line-height: 25px;
-padding: 10px 0;
-text-decoration: none;
-text-shadow: none;
-border-radius: 3px;
-box-shadow: none;
-transition: 0.25s;
-display: block;
-width: 250px;
-margin: 0 auto;
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
 }
 
-.btn:hover {
-background-color: #2980B9;
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
 }
 
-.login-link {
-font-size: 12px;
-color: #444;
-display: block;
-margin-top: 12px;
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
 }
