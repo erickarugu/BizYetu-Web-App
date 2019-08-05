@@ -1,0 +1,203 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container main-secction">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+                <img src="https://png.pngtree.com/thumb_back/fw800/back_pic/00/08/57/41562ad4a92b16a.jpg">
+            </div>
+            <div class="row user-left-part">
+                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                    <div class="row ">
+                        <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                            <img src="{{ image_file }}" class="rounded-circle">
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+                            <button class="btn btn-success btn-block follow"><i class="fa fa-globe"></i> Web</button>
+                            <button class="btn btn-warning btn-block"><i class="fa fa-twitter"></i> Twitter</button>
+                        </div>
+                        <div class="row user-detail-row">
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>BUSINESSES POSTED</p>
+                                <span class="text-center">11</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>LATEST BUSINESS POST</p>
+                                <span class="text-center">Sell your tomatoes..</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>NUMBER OF REVIEWS</p>
+                                <span class="text-center">19</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="row profile-right-section-row">
+                        <div class="col-md-12 profile-header">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                    <h1>{{ current_user.username }}</h1>
+                                    <h5>{{ current_user.user_type }}</h5>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                                    <a href="#" class="btn btn-primary btn-block">View My Businesses</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i class="fa fa-user-circle"></i> Personal Profile</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#buzz" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i> Update Information</a>
+                                                </li>
+                                              </ul>
+
+                                              <!-- Tab panes -->
+                                              <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                                                        <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>User Name:</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ current_user.username }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>Email:</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ current_user.email }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>User Type: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ current_user.user_type }}</p>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="buzz">
+                                                    <form method="POST" action="" enctype="multipart/form-data">
+                                                        {{ form.hidden_tag() }}
+                                                        <fieldset class="form-group">
+                                                        <div class="row pt-3">
+                                                                <div class="col-md-4">
+                                                                    {{ form.username.label(class="form-control-label")}}
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    {% if form.username.errors %}
+                                                                    {{ form.username(class="form-control form-control-lg is-invalid")}}
+                                                                    <div class="invalid-feedback">
+                                                                        {% for error in form.username.errors %}
+                                                                            <span>{{ error }}</span>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {{ form.username(class="form-control form-control-lg")}}
+                                                                {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="row pt-3">
+                                                                <div class="col-md-4">
+                                                                    {{ form.email.label(class="form-control-label")}}
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    {% if form.email.errors %}
+                                                                    {{ form.email(class="form-control form-control-lg is-invalid")}}
+                                                                    <div class="invalid-feedback">
+                                                                        {% for error in form.email.errors %}
+                                                                            <span>{{ error }}</span>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {{ form.email(class="form-control form-control-lg")}}
+                                                                {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="row pt-3 text-left">
+                                                                <div class="col-md-4">
+                                                                    {{ form.user_type.label(class="form-control-label")}}
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    {% if form.user_type.errors %}
+                                                                    {{ form.user_type(class="form-control form-control-lg is-invalid")}}
+                                                                    <div class="invalid-feedback">
+                                                                        {% for error in form.user_type.errors %}
+                                                                            <span>{{ error }}</span>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% else %}
+                                                                    {{ form.user_type(class="form-control form-control-lg")}}
+                                                                {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="row pt-3 text-left">
+                                                                <div class="col-md-4">
+                                                                    {{ form.picture.label()}}
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    {{ form.picture(class="form-control-file")}}
+                                                                    {% if form.picture.errors %}
+                                                                        {% for error in form.picture.errors %}
+                                                                            <span class="text-danger">{{ error }}</span><br>
+                                                                        {% endfor %}
+                                                                {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="md-form mb-2 text-center pt-4">
+                                                                <div class="form-group">
+                                                                    {{ form.submit(class="btn btn-outline-success") }}
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
+                                                    </div>
+                                              </div>
+
+                                </div>
+                                <div class="col-md-4 img-main-rightPart">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row image-right-part">
+                                                <div class="col-md-6 pull-left image-right-detail">
+                                                    <h6>AD Section</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="http://camaradecomerciozn.com/">
+                                            <div class="col-md-12 image-right">
+                                                <img src="http://pluspng.com/img-png/bootstrap-png-bootstrap-512.png">
+                                            </div>
+                                        </a>
+                                        <div class="col-md-12 image-right-detail-section2">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- The footer section -->
+        <footer class="py-3">
+          <div class="container text-center">
+            <p class="font-italic text-muted mb-0">&copy; Copyrights BizYetu All rights reserved.</p>
+          </div>
+        </footer>
+{% endblock content %}
