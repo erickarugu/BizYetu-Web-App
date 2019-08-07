@@ -1,11 +1,13 @@
 {% extends 'layout.html' %}
 {% block content %}
+<svg viewbox="0 0 100 20">
+      <!-- <path fill="#F2FFB6" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" /> -->
+  </svg>
     <div class="container">
-
   <!-- Page Heading -->
         <div class="border-bottom border-info pt-2">
           <h1>
-            <small>Businesses</small>
+            <small>Businesses - SME</small>
           </h1>
         </div>
           <div class="row mt-2">
@@ -30,6 +32,121 @@
                 </div>
           </div> <!-- Row end -->
           {% endfor %}
-</div>
+    </div>
 <!-- /.container -->
+<!-- Page Heading -->
+        <div class="border-bottom border-info pt-2">
+          <h1>
+            <small>Businesses - TECHNOLOGY</small>
+          </h1>
+        </div>
+          <div class="row mt-2">
+            {% for business in businesses %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
+                  <div class="card h-100">
+                    <h5 class="card-title text-center pt-2">
+                        <a href="#" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
+                      </h5>
+                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
+                    <div class="card-body">
+                        <div class="post-description border-bottom border-warning">
+                            <ul class="list-group">
+                                <li class="list-item">Date Posted:  {{ business.business_date_posted.strftime('%Y-%m-%d') }}</li>
+                                <li class="list-item">Category: {{ business.business_category }}</li>
+                                <li class="list-item">Location: {{ business.business_location }}</li>
+                                <li class="list-item">Posted By: {{ business.business_owner.username}}</li>
+                            </ul>
+                        </div>
+                      <p class="card-text">{{ business.business_description }}
+                  </div>
+                </div>
+          </div> <!-- Row end -->
+          {% endfor %}
+    </div>
+<!-- /.container -->
+<!-- Page Heading -->
+        <div class="border-bottom border-info pt-2">
+          <h1>
+            <small>Businesses - AGRICULTURE</small>
+          </h1>
+        </div>
+          <div class="row mt-2">
+            {% for business in businesses %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
+                  <div class="card h-100">
+                    <h5 class="card-title text-center pt-2">
+                        <a href="#" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
+                      </h5>
+                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
+                    <div class="card-body">
+                        <div class="post-description border-bottom border-warning">
+                            <ul class="list-group">
+                                <li class="list-item">Date Posted:  {{ business.business_date_posted.strftime('%Y-%m-%d') }}</li>
+                                <li class="list-item">Category: {{ business.business_category }}</li>
+                                <li class="list-item">Location: {{ business.business_location }}</li>
+                                <li class="list-item">Posted By: {{ business.business_owner.username}}</li>
+                            </ul>
+                        </div>
+                      <p class="card-text">{{ business.business_description }}
+                  </div>
+                </div>
+          </div> <!-- Row end -->
+          {% endfor %}
+    </div>
+  </div>
+<!-- /.container -->
+
+  <!-- Partners -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="../static/logos/envato.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="../static/logos/designmodo.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="../static/logos/themeforest.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="../static/logos/creative-market.jpg" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- /.container -->
+    <footer>
+            <div class="container-fluid text-center">
+                <section class="home-newsletter pt-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="single">
+                                    <h2>Subscribe to our Newsletter</h2>
+                                    <div class="input-group">
+                                         <input type="email" class="form-control" placeholder="Enter your email">
+                                         <span class="input-group-btn">
+                                         <button class="btn btn-theme" type="submit">Subscribe</button>
+                                         </span>
+                                    </div>
+                                </div>
+                                <div style="color: white" class="pt-4">
+                                    <p>&copy;<script type="text/javascript">document.write(new Date().getFullYear());</script></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </footer>
 {% endblock content %}
