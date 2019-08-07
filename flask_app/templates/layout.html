@@ -37,16 +37,10 @@
 	          <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
 	          <a class="nav-item nav-link" href="{{ url_for('about') }}">Who are we?</a>
 	          <a class="nav-item nav-link" href="#">Reach Out</a>
-	          <a class="nav-item nav-link" href="{{ url_for('businesses') }}">Services-Bs</a>
-	          <div class="dropdown">
-				  <a class="nav-item nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Businesses</a>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="#">AGRICULTURE</a>
-				    <a class="dropdown-item" href="#">TECHNOLOGY</a>
-				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">SME</a>
-				  </div>
-				</div>
+	          <a class="nav-item nav-link" href="{{ url_for('businesses') }}">Businesses</a>
+	          {% if current_user.is_authenticated %}
+	          		<a class="nav-item nav-link" href="{{ url_for('new_business') }}">Register Businesses</a>
+	          {% endif %}
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -79,7 +73,7 @@
 
 <!-- The main section -->
 	<main >
-	    <div class="container-fluid text-center pt-4">
+	    <div class="container-fluid text-center pt-5">
 	    	{% with messages = get_flashed_messages(with_categories=true) %}
 	    		{% if messages %}
 	    			{% for category, message in messages %}

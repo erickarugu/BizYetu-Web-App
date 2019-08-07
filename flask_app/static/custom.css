@@ -1,5 +1,4 @@
 body {
-  background: #f2ffb6;
   color: #333333;
   margin-top: 0rem;
   overflow-x: hidden;
@@ -42,6 +41,9 @@ h1, h2, h3, h4, h5, h6 {
 .login-register a:hover{
   text-decoration: none;
   color: #cc9e9e;
+}
+.alert{
+  font-size: 10px;
 }
 svg {
   background: url('top-image.jpg') no-repeat center center;
@@ -268,3 +270,21 @@ a.article-title:hover {
   .image-right-detail-section2 span{
     color:#7F7F7F;
   }
+
+
+/* Businesses page custom css*/
+.post-description ul{
+  list-style: none;
+}
+
+.post-description ul li{
+  display: inline-block !important;
+  font-size: 10px;
+}
+.business-cards{
+  padding: 0px 2px 0px 0px !important;
+}
+.business-cards a:hover{
+  text-decoration: none;
+
+}

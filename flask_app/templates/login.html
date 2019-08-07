@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
     {% block content %}
+      <svg viewbox="0 0 100 20">
+      <!-- <path fill="#F2FFB6" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" /> -->
+  </svg>
                 <div class="container content-section col-md-8 pt-5">
                     <div class="text-center">
                         <h2>Log In</h2>
@@ -11,14 +14,14 @@
                                 <i class="fa fa-envelope"></i> {{ form.email.label(class="form-control-label")}}
 
                                 {% if form.email.errors %}
-                                    {{ form.email(class="form-control form-control-lg is-invalid")}}
+                                    {{ form.email(class="form-control form-control-sm is-invalid")}}
                                     <div class="invalid-feedback">
                                         {% for error in form.email.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.email(class="form-control form-control-lg")}}
+                                    {{ form.email(class="form-control form-control-sm")}}
                                 {% endif %}
 
                             </div>
@@ -26,14 +29,14 @@
                                 <i class="fa fa-lock"></i> {{ form.password.label(class="form-control-label")}}
 
                                 {% if form.password.errors %}passwordconfirm
-                                    {{ form.password(class="form-control form-control-lg is-invalid")}}
+                                    {{ form.password(class="form-control form-control-sm is-invalid")}}
                                     <div class="invalid-feedback">
                                         {% for error in form.password.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.password(class="form-control form-control-lg")}}
+                                    {{ form.password(class="form-control form-control-sm")}}
                                 {% endif %}
                             </div>
                             <div class="form-check">

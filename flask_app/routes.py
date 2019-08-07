@@ -53,11 +53,6 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/businesses', methods=['GET', 'POST'])
-def businesses():
-    return render_template('businesses.html', title='Businesses')
-
-
 @app.route('/about', methods=['GET', 'POST'])
 def about():
     return render_template('about_us.html', title='About')
@@ -91,7 +86,7 @@ def account():
         current_user.email = form.email.data
         current_user.user_type = form.user_type.data
         db.session.commit()
-        flash('Your account has been updated!')
+        flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -102,11 +97,31 @@ def account():
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 
+@app.route('/businesses', methods=['GET', 'POST'])
+def businesses():
+    from flask_app.models import User, Business, Review
+
+    businesses = Business.query.all()
+    return render_template('businesses.html', title='Businesses', businesses=businesses)
+
+
 @app.route('/businesses/new', methods=['GET', 'POST'])
 @login_required
 def new_business():
     form = BusinessForm()
+    from flask_app.models import User, Business, Review
+
     if form.validate_on_submit():
-        flash('Your Business has been posted')
+        business = Business(business_title=form.business_title.data, email=form.email.data, business_description=form.business_description.data,
+                            business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user)
+        db.session.add(business)
+        db.session.commit()
+        flash('Your Business has been posted', 'success')
         return redirect(url_for('home'))
     return render_template('create_business.html', title="New Business", form=form)
+
+
+@app.route("/post/<int:business_id>")
+def Business(business_id):
+    business = Business.query.get_or_404(business_id)
+    return render_template('business.html', title='business.business_title')

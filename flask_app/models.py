@@ -16,7 +16,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     user_image_file = db.Column(
         db.String(120), nullable=False, default='default.jpg')
-    businesses = db.relationship('Business', backref='owner', lazy=True)
+    businesses = db.relationship(
+        'Business', backref='business_owner', lazy=True)
     reviews = db.relationship('Review', backref='owner', lazy=True)
 
     def __repr__(self):
@@ -26,7 +27,7 @@ class User(db.Model, UserMixin):
 class Business(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     business_title = db.Column(db.String(100), nullable=False)
-    business_description = db.Column(db.String(100), nullable=False)
+    business_description = db.Column(db.String(280), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     business_image_file = db.Column(
         db.String(120), nullable=False, default='default.jpg')
@@ -34,7 +35,7 @@ class Business(db.Model, UserMixin):
                                      default=datetime.utcnow)
     business_category = db.Column(db.String(100), nullable=False)
     business_location = db.Column(db.String(100), nullable=False)
-    review_content = db.Column(db.Text, nullable=False)
+    business_tel = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):

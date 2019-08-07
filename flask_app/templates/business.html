@@ -1,21 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container">
+    <div class="container text-center">
 
   <!-- Page Heading -->
         <div class="border-bottom border-info pt-2">
           <h1>
-            <small>Businesses</small>
+            <small>Business</small>
           </h1>
         </div>
-          <div class="row mt-2">
-            {% for business in businesses %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
+          <div class="row mt-2 text-center">
+                <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
                   <div class="card h-100">
-                    <h5 class="card-title text-center pt-2">
-                        <a href="#" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
-                      </h5>
-                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
+                    <div class="text-center"><h3>{{ business.business_title }}</h3></div>
+                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + current_user.user_image_file) }}" alt=""></a>
                     <div class="card-body">
                         <div class="post-description border-bottom border-warning">
                             <ul class="list-group">
@@ -29,7 +26,6 @@
                   </div>
                 </div>
           </div> <!-- Row end -->
-          {% endfor %}
 </div>
 <!-- /.container -->
 {% endblock content %}
