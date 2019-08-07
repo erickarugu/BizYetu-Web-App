@@ -9,7 +9,7 @@
                     <fieldset class="form-group">
                         <div class="md-form mb-2">
                           <div class="form-group">
-                                {{ form.username.label(class="form-control-label")}}
+                                <i class="fa fa-user"></i> {{ form.username.label(class="form-control-label")}}
 
                                 {% if form.username.errors %}
                                     {{ form.username(class="form-control form-control-lg is-invalid")}}
@@ -25,7 +25,7 @@
                         </div>
                         <div class="md-form mb-2">
                           <div class="form-group">
-                                {{ form.email.label(class="form-control-label")}}
+                                <i class="fa fa-envelope"></i> {{ form.email.label(class="form-control-label")}}
 
                                 {% if form.email.errors %}
                                     {{ form.email(class="form-control form-control-lg is-invalid")}}
@@ -42,7 +42,7 @@
 
                         <div class="md-form mb-2">
                           <div class="form-group">
-                                {{ form.user_type.label(class="form-control-label")}}
+                                <i class="fa fa-tag"></i> {{ form.user_type.label(class="form-control-label")}}
 
                                 {% if form.user_type.errors %}
                                     {{ form.user_type(class="form-control form-control-lg is-invalid")}}
@@ -59,7 +59,7 @@
                         </div>
                         <div class="md-form mb-2">
                             <div class="form-group">
-                                {{ form.password.label(class="form-control-label")}}
+                                <i class="fa fa-lock"></i> {{ form.password.label(class="form-control-label")}}
 
                                 {% if form.password.errors %}passwordconfirm
                                     {{ form.password(class="form-control form-control-lg is-invalid")}}
@@ -76,7 +76,7 @@
                         </div>
                         <div class="md-form mb-2">
                                 <div class="form-group">
-                                    {{ form.confirm_password.label(class="form-control-label")}}
+                                    <i class="fa fa-lock"></i> {{ form.confirm_password.label(class="form-control-label")}}
 
                                     {% if form.confirm_password.errors %}
                                         {{ form.confirm_password(class="form-control form-control-lg is-invalid")}}

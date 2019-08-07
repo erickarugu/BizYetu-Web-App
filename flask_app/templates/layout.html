@@ -9,12 +9,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
+
+	<!-- Custom fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- title -->
 	{% if title %}
 		<title>BizYetu - {{ title }}</title>
 	{% else %}
 		<title>BixYetu</title>
 	{% endif %}
 </head>
+<!-- The body section -->
 <body>
 	<header class="site-header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
@@ -70,7 +79,7 @@
 
 <!-- The main section -->
 	<main >
-	    <div class="container-fluid text-center pt-5">
+	    <div class="container-fluid text-center pt-4">
 	    	{% with messages = get_flashed_messages(with_categories=true) %}
 	    		{% if messages %}
 	    			{% for category, message in messages %}

@@ -8,7 +8,7 @@
                         {{ form.hidden_tag() }}
                         <fieldset class="form-group">
                             <div class="form-group">
-                                {{ form.email.label(class="form-control-label")}}
+                                <i class="fa fa-envelope"></i> {{ form.email.label(class="form-control-label")}}
 
                                 {% if form.email.errors %}
                                     {{ form.email(class="form-control form-control-lg is-invalid")}}
@@ -23,7 +23,7 @@
 
                             </div>
                             <div class="form-group">
-                                {{ form.password.label(class="form-control-label")}}
+                                <i class="fa fa-lock"></i> {{ form.password.label(class="form-control-label")}}
 
                                 {% if form.password.errors %}passwordconfirm
                                     {{ form.password(class="form-control form-control-lg is-invalid")}}
