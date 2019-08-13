@@ -3,8 +3,8 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flask_app import app, db, bcrypt
+from flask_app.models import User, Business
 from flask_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, BusinessForm
-from flask_app.models import User, Business, Review
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -99,8 +99,6 @@ def account():
 
 @app.route('/businesses', methods=['GET', 'POST'])
 def businesses():
-    from flask_app.models import User, Business, Review
-
     businesses = Business.query.all()
     return render_template('businesses.html', title='Businesses', businesses=businesses)
 
@@ -109,7 +107,6 @@ def businesses():
 @login_required
 def new_business():
     form = BusinessForm()
-    from flask_app.models import User, Business, Review
 
     if form.validate_on_submit():
         business = Business(business_title=form.business_title.data, email=form.email.data, business_description=form.business_description.data,
