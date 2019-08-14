@@ -77,6 +77,10 @@ def save_picture(form_picture):
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    businesses = Business.query.filter_by(
+        user_id=current_user.id).order_by(Business.business_date_posted.desc()).first()
+    total_businesses = Business.query.filter_by(
+        user_id=current_user.id).order_by(Business.business_date_posted.desc()).count()
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -94,12 +98,13 @@ def account():
         form.user_type.data = current_user.user_type
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.user_image_file)
-    return render_template('account.html', title='Account', image_file=image_file, form=form)
+    return render_template('account.html', title='Account', image_file=image_file, form=form, businesses=businesses, total_businesses=total_businesses)
 
 
 @app.route('/businesses', methods=['GET', 'POST'])
 def businesses():
-    businesses = Business.query.all()
+    businesses = Business.query.order_by(
+        Business.business_date_posted.desc()).all()
     return render_template('businesses.html', title='Businesses', businesses=businesses)
 
 
@@ -118,7 +123,7 @@ def new_business():
     return render_template('create_business.html', title="New Business", form=form)
 
 
-@app.route("/post/<int:business_id>")
-def Business(business_id):
-    business = Business.query.get_or_404(business_id)
-    return render_template('business.html', title='business.business_title')
+# @app.route("/post/<int:business_id>")
+# def business(business_id):
+#     business = Business.query.get_or_404(business_id)
+#     return render_template('business.html', title='business.business_title')

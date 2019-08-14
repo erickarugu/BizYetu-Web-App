@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_app import db, login_manager
 from flask_login import UserMixin
 
@@ -32,7 +32,7 @@ class Business(db.Model, UserMixin):
     business_image_file = db.Column(
         db.String(120), nullable=False, default='default.jpg')
     business_date_posted = db.Column(db.DateTime, nullable=False,
-                                     default=datetime.utcnow)
+                                     default=datetime.utcnow() + timedelta(hours=3))
     business_category = db.Column(db.String(100), nullable=False)
     business_location = db.Column(db.String(100), nullable=False)
     business_tel = db.Column(db.Integer, nullable=False)
@@ -45,7 +45,7 @@ class Business(db.Model, UserMixin):
 class Review(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     review_date_posted = db.Column(db.DateTime, nullable=False,
-                                   default=datetime.utcnow)
+                                   default=datetime.utcnow() + timedelta(hours=3))
     review_content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
