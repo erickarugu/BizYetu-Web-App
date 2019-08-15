@@ -5,7 +5,7 @@ body {
   font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   color: #444444;
 }
 .navbar-brand{
@@ -287,4 +287,54 @@ a.article-title:hover {
 .business-cards a:hover{
   text-decoration: none;
 
+}
+
+/*.header-section*/
+.header-section {
+  position: relative;
+  background-color: black;
+  height: 55vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header-section video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.header-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.header-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #323ab1;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  .header-section {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  .header-section video {
+    display: none;
+  }
 }

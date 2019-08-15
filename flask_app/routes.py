@@ -11,7 +11,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html', title='Home')
+    businesses = Business.query.order_by(
+        Business.business_date_posted.desc()).all()
+    return render_template('home.html', title='Home', businesses=businesses)
 
 
 @app.route('/register', methods=['GET', 'POST'])

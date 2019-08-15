@@ -1,62 +1,54 @@
 {% extends "layout.html" %}
 	{% block content %}
-    <!-- Page Content -->
-    <svg viewbox="0 0 100 20">
-      <!-- <path fill="#F2FFB6" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" /> -->
-  </svg>
+    <!-- The Header Section -->
+   <section class="header-section">
+      <div class="overlay"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+      </video>
+      <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+          <div class="w-100 text-white">
+            <h1 class="display-3">Welcome to BizYetu</h1>
+            <p class="lead mb-0">The Business Pace-Setters!</p>
+          </div>
+        </div>
+      </div>
+  </section>
 
-<div class="container-fluid">
-    <div class="">
-        <h2 class="lead display-5">Latest Business posted...</h2>
-    </div>
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project One</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+<!-- The businesses section -->
+    <div class="container">
+        <div class="border-bottom border-info pt-2">
+          <h1>
+            <small>Businesses - SME</small>
+          </h1>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Two</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Three</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Four</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
+          <div class="row mt-2">
+            {% for business in businesses %}
+            {% if business.business_category == 'SME' %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
+                  <div class="card h-100">
+                    <h5 class="card-title text-center pt-2">
+                        <a href="#" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
+                      </h5>
+                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
+                    <div class="card-body">
+                        <div class="post-description border-bottom border-warning">
+                            <ul class="list-group">
+                                <li class="list-item">Date Posted:  {{ business.business_date_posted.strftime('%Y-%m-%d %H:%M %p') }}</li>
+                                <li class="list-item">Category: {{ business.business_category }}</li>
+                                <li class="list-item">Location: {{ business.business_location }}</li>
+                                <li class="list-item">Posted By: {{ business.business_owner.username}}</li>
+                            </ul>
+                        </div>
+                      <p class="card-text">{{ business.business_description }}
+                  </div>
+                </div>
+          </div> <!-- Row end -->
+          {% endif %}
+          {% endfor %}
     </div>
   </div>
-  <!-- /.row -->
-</div>
 <!-- /.container -->
 
   <!-- Partners -->
