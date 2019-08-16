@@ -273,20 +273,37 @@ a.article-title:hover {
 
 
 /* Businesses page custom css*/
-.post-description ul{
-  list-style: none;
+.carousel-item {
+  height: 45vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-
-.post-description ul li{
-  display: inline-block !important;
-  font-size: 10px;
+.carousel-item h3{
+  color: #671818;
+  margin-bottom: 100px;
 }
-.business-cards{
-  padding: 0px 2px 0px 0px !important;
+table{
+  font-family: Roboto,sans-serif;
+  font-size: .9rem;
+  color: #ffffff;
+  font-weight: 300;
+  background-image: linear-gradient(#24C6DC, #514A9D);
 }
-.business-cards a:hover{
+table a{
   text-decoration: none;
-
+  color: #ffffff;
+}
+table a:hover{
+  text-decoration: none;
+  font-size: .92rem;
+  color: #c4c9d0;
+}
+table thead{
+  background-color: #3f4071;
 }
 
 /*.header-section*/
