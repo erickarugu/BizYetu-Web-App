@@ -31,8 +31,7 @@ class Business(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False)
     business_image_file = db.Column(
         db.String(120), nullable=False, default='default.jpg')
-    business_date_posted = db.Column(db.DateTime, nullable=False,
-                                     default=datetime.utcnow() + timedelta(hours=3))
+    business_date_posted = db.Column(db.DateTime, nullable=False)
     business_category = db.Column(db.String(100), nullable=False)
     business_location = db.Column(db.String(100), nullable=False)
     business_tel = db.Column(db.Integer, nullable=False)

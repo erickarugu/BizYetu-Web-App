@@ -1,31 +1,161 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container text-center">
-
-  <!-- Page Heading -->
-        <div class="border-bottom border-info pt-2">
-          <h1>
-            <small>Business</small>
-          </h1>
-        </div>
-          <div class="row mt-2 text-center">
-                <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
-                  <div class="card h-100">
-                    <div class="text-center"><h3>{{ business.business_title }}</h3></div>
-                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + current_user.user_image_file) }}" alt=""></a>
-                    <div class="card-body">
-                        <div class="post-description border-bottom border-warning">
-                            <ul class="list-group">
-                                <li class="list-item">Date Posted:  {{ business.business_date_posted.strftime('%Y-%m-%d') }}</li>
-                                <li class="list-item">Category: {{ business.business_category }}</li>
-                                <li class="list-item">Location: {{ business.business_location }}</li>
-                                <li class="list-item">Posted By: {{ business.business_owner.username}}</li>
-                            </ul>
+    <div class="container main-secction">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+                <img src="https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_960_720.jpg">
+            </div>
+            <div class="row user-left-part">
+                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                    <div class="row ">
+                        <div class="row user-detail-row pt-5">
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>DATE UPDATED</p>
+                                <span class="text-center">{{ business.business_date_posted.strftime('%Y-%m-%d %H:%M %p') }}</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>POSTED BY</p>
+                                <span class="text-center">{{ business.business_owner.username }}</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>NUMBER OF REVIEWS</p>
+                                <span class="text-center">19</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+                                <div class="border"></div>
+                                <p>LATEST REVIEW</p>
+                                <span class="text-center">...</span>
+                            </div>
                         </div>
-                      <p class="card-text">{{ business.business_description }}
-                  </div>
+
+                    </div>
                 </div>
-          </div> <!-- Row end -->
-</div>
-<!-- /.container -->
+                <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="row profile-right-section-row">
+                        <div class="col-md-12 profile-header">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                    <h1>{{ business.business_title }}</h1>
+                                </div>
+                                {% if business.business_owner ==current_user %}
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                                    <a href="{{ url_for('update_business', business_id=business.id) }}" class="btn btn-info btn-block"><i class="fa fa-edit"></i> Update Business</a>
+                                    <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i> Delete Business</a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i class="fa fa-user-circle"></i> Business Profile</a>
+                                                </li>
+                                              </ul>
+
+                                              <!-- Tab panes -->
+                                              <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                                                        <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <label>Business Name:</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ business.business_title }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <label>Business Email:</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ business.email }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <label>Business Category: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ business.business_category }}</p>
+                                                                </div>
+                                                            </div>
+                                                             <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <label>Business Tel: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ business.business_tel }}</p>
+                                                                </div>
+                                                            </div>
+                                                             <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <label>Business Location: </label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{ business.business_location }}</p>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                              </div>
+
+                                </div>
+                                <div class="col-md-4 img-main-rightPart mt-2">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row image-right-part">
+                                                <div class="col-md-6 pull-left image-right-detail">
+                                                    <h6>Joel Solutions</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="http://camaradecomerciozn.com/">
+                                            <div class="col-md-12 image-right">
+                                                <img src="http://pluspng.com/img-png/bootstrap-png-bootstrap-512.png">
+                                            </div>
+                                        </a>
+                                        <div class="col-md-12 image-right-detail-section2">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModal">Delete Business!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <h3>{{ business.business_title }}</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <form action="{{ url_for('delete_business', business_id=business.id) }}" method="POST">
+                <input type="submit" name="" class="btn btn-danger" value="Delete">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- The footer section -->
+    <footer class="py-3">
+        <div class="container text-center">
+          <p class="font-italic text-muted mb-0">&copy;2019 Copyrights BizYetu - All rights reserved.</p>
+        </div>
+    </footer>
 {% endblock content %}

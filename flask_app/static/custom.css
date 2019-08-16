@@ -240,12 +240,12 @@ a.article-title:hover {
     font-size: 20px;
   }
   .image-right-part{
-    background-color: yellow;
     margin: 0px;
     padding: 5px;
   }
   .img-main-rightPart{
-    background-color: yellow;
+/*    background-color: #a9a996;*/
+    background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg');
     margin-top: auto;
   }
   .image-right-detail{
@@ -332,7 +332,7 @@ a.article-title:hover {
 
 @media (pointer: coarse) and (hover: none) {
   .header-section {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    background: url('https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_960_720.jpg') black no-repeat center center scroll;
   }
   .header-section video {
     display: none;

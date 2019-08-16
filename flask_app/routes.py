@@ -1,7 +1,8 @@
 import os
 import secrets
+from datetime import datetime, timedelta
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from flask_app import app, db, bcrypt
 from flask_app.models import User, Business
 from flask_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, BusinessForm
@@ -117,15 +118,56 @@ def new_business():
 
     if form.validate_on_submit():
         business = Business(business_title=form.business_title.data, email=form.email.data, business_description=form.business_description.data,
-                            business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user)
+                            business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user, business_date_posted = datetime.utcnow() + timedelta(hours=3))
         db.session.add(business)
         db.session.commit()
         flash('Your Business has been posted', 'success')
         return redirect(url_for('home'))
-    return render_template('create_business.html', title="New Business", form=form)
+    return render_template('create_business.html', title="New Business", form=form, legend='Post Your Business Today')
 
 
-# @app.route("/post/<int:business_id>")
-# def business(business_id):
-#     business = Business.query.get_or_404(business_id)
-#     return render_template('business.html', title='business.business_title')
+@app.route("/businesses/<int:business_id>")
+def business(business_id):
+    business = Business.query.get_or_404(business_id)
+    return render_template('business.html', title=business.business_title, business=business)
+
+
+@app.route("/businesses/<int:business_id>/update", methods=['GET', 'POST'])
+def update_business(business_id):
+    business = Business.query.get_or_404(business_id)
+    if business.business_owner != current_user:
+        abort(403)
+    form = BusinessForm()
+    if form.validate_on_submit():
+        business.business_title = form.business_title.data
+        business.business_title = form.business_title.data
+        business.email = form.email.data
+        business.business_description = form.business_description.data
+        business.business_category = form.business_category.data
+        business.business_location = form.business_location.data
+        business.business_tel = form.business_tel.data
+        business.business_date_posted = datetime.utcnow() + timedelta(hours=3)
+        db.session.commit()
+        flash('Your Business profile has been updated', 'success')
+        return redirect(url_for('business', business_id=business.id))
+    elif request.method == 'GET':
+        form.business_title.data = business.business_title
+        form.business_title.data = business.business_title
+        form.email.data = business.email
+        form.business_description.data = business.business_description
+        form.business_category.data = business.business_category
+        form.business_location.data = business.business_location
+        form.business_tel.data = business.business_tel
+
+    return render_template('update_business.html', title="Update Business", form=form, legend='Update Business Profile')
+
+
+@app.route("/businesses/<int:business_id>/delete", methods=['GET', 'POST'])
+def delete_business(business_id):
+    business = Business.query.get_or_404(business_id)
+    if business.business_owner != current_user:
+        abort(403)
+    db.session.delete(business)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('home'))

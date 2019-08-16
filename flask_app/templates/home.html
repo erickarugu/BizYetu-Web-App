@@ -25,11 +25,11 @@
         </div>
           <div class="row mt-2">
             {% for business in businesses %}
-            {% if business.business_category == 'SME' %}
+            {% if business.business_category != 'SME' %}
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
                   <div class="card h-100">
                     <h5 class="card-title text-center pt-2">
-                        <a href="#" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
+                        <a href="{{ url_for('business', business_id=business.id) }}" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
                       </h5>
                     <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
                     <div class="card-body">
