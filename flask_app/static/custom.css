@@ -2,7 +2,7 @@ body {
   color: #333333;
   margin-top: 0rem;
   overflow-x: hidden;
-  font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;;
 }
 
 h2, h3, h4, h5, h6 {
@@ -34,6 +34,7 @@ h2, h3, h4, h5, h6 {
 }
 .social-links a:hover{
   color: gray;
+  text-decoration: none;
 }
 .login-register a{
   color: white;
@@ -43,7 +44,13 @@ h2, h3, h4, h5, h6 {
   color: #cc9e9e;
 }
 .alert{
-  font-size: 10px;
+  font-size: 15px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: #2AD8A2;
+  color: #ffffff;
+  font-family: Poppins;
 }
 svg {
   background: url('top-image.jpg') no-repeat center center;

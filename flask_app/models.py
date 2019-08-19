@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     user_type = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     user_image_file = db.Column(
-        db.String(120), nullable=False, default='default.jpg')
+        db.String(120), nullable=False, default='default.png')
     businesses = db.relationship(
         'Business', backref='business_owner', lazy=True)
     reviews = db.relationship('Review', backref='reviewer', lazy=True)

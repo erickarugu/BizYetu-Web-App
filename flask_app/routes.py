@@ -17,7 +17,7 @@ def home():
     return render_template('home.html', title='Home', businesses=businesses)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/auth/signup', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -29,12 +29,12 @@ def register():
                     user_type=form.user_type.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash(f'{form.username.data}, Your account has been created', 'success')
+        flash(f'{form.username.data}, Your account has been created')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/auth/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -44,9 +44,10 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
+            flash(f'Welcome back!', 'success')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
-            flash(f'Login Unsuccessful. Please check your Email and Password', 'danger')
+            flash(f'Login Unsuccessful. Please check your Email and Password')
     return render_template('login.html', title='Login', form=form)
 
 
@@ -93,7 +94,7 @@ def account():
         current_user.email = form.email.data
         current_user.user_type = form.user_type.data
         db.session.commit()
-        flash('Your account has been updated!', 'success')
+        flash('Your account has been updated!')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
@@ -121,7 +122,7 @@ def new_business():
                             business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user, business_date_posted=datetime.utcnow() + timedelta(hours=3))
         db.session.add(business)
         db.session.commit()
-        flash('Your Business has been posted', 'success')
+        flash('Your Business has been posted')
         return redirect(url_for('home'))
     return render_template('create_business.html', title="New Business", form=form, legend='Post Your Business Today')
 
@@ -148,7 +149,7 @@ def update_business(business_id):
         business.business_tel = form.business_tel.data
         business.business_date_posted = datetime.utcnow() + timedelta(hours=3)
         db.session.commit()
-        flash('Your Business profile has been updated', 'success')
+        flash('Your Business profile has been updated')
         return redirect(url_for('business', business_id=business.id))
     elif request.method == 'GET':
         form.business_title.data = business.business_title
@@ -169,5 +170,5 @@ def delete_business(business_id):
         abort(403)
     db.session.delete(business)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('Your post has been deleted!')
     return redirect(url_for('home'))
