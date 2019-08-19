@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from flask_app import app, db, bcrypt
-from flask_app.models import User, Business
+from flask_app.models import User, Business, Review
 from flask_app.forms import RegistrationForm, LoginForm, UpdateAccountForm, BusinessForm
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -118,7 +118,7 @@ def new_business():
 
     if form.validate_on_submit():
         business = Business(business_title=form.business_title.data, email=form.email.data, business_description=form.business_description.data,
-                            business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user, business_date_posted = datetime.utcnow() + timedelta(hours=3))
+                            business_location=form.business_location.data, business_category=form.business_category.data, business_tel=form.business_tel.data, business_owner=current_user, business_date_posted=datetime.utcnow() + timedelta(hours=3))
         db.session.add(business)
         db.session.commit()
         flash('Your Business has been posted', 'success')

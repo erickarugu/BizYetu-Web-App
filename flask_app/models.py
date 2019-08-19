@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
         db.String(120), nullable=False, default='default.jpg')
     businesses = db.relationship(
         'Business', backref='business_owner', lazy=True)
-    reviews = db.relationship('Review', backref='owner', lazy=True)
+    reviews = db.relationship('Review', backref='reviewer', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.user_type}')"
@@ -43,8 +43,7 @@ class Business(db.Model, UserMixin):
 
 class Review(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    review_date_posted = db.Column(db.DateTime, nullable=False,
-                                   default=datetime.utcnow() + timedelta(hours=3))
+    review_date_posted = db.Column(db.DateTime, nullable=False)
     review_content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
