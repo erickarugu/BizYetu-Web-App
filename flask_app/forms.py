@@ -79,3 +79,7 @@ class BusinessForm(FlaskForm):
         'Business Category *', choices=business_categories, validators=[DataRequired()])
     business_tel = StringField('Telephone', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class ReviewForm(FlaskForm):
+        review_content = TextAreaField(
+        'Description', validators=[DataRequired(), Length(min=10, max=120)])

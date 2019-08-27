@@ -29,7 +29,7 @@ def register():
                     user_type=form.user_type.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash(f'{form.username.data}, Your account has been created')
+        flash(f'{form.username.data}, Your account has been created successfuly!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -47,7 +47,7 @@ def login():
             flash(f'Welcome back!', 'success')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
-            flash(f'Login Unsuccessful. Please check your Email and Password')
+            flash(f'Login Unsuccessful. Kindly check your Email and Password.')
     return render_template('login.html', title='Login', form=form)
 
 
@@ -149,7 +149,7 @@ def update_business(business_id):
         business.business_tel = form.business_tel.data
         business.business_date_posted = datetime.utcnow() + timedelta(hours=3)
         db.session.commit()
-        flash('Your Business profile has been updated')
+        flash('Your Business profile has been updated.')
         return redirect(url_for('business', business_id=business.id))
     elif request.method == 'GET':
         form.business_title.data = business.business_title
@@ -171,4 +171,16 @@ def delete_business(business_id):
     db.session.delete(business)
     db.session.commit()
     flash('Your post has been deleted!')
+    return redirect(url_for('home'))
+
+@app.route("/account/<int:user_id>/delete", methods=['GET', 'POST'])
+def delete_account(user_id):
+    user = User.query.get_or_404(user_id)
+    if user != current_user:
+        abort(403)
+    for business in Business.query.filter_by( user_id=current_user.id).order_by(Business.business_date_posted.desc()).all():
+        db.session.delete(business)
+    db.session.delete(user)
+    db.session.commit()
+    flash('Your Account has been deleted!')
     return redirect(url_for('home'))

@@ -36,6 +36,11 @@
                 <span class="sr-only">Next</span>
               </a>
         </div>
+        {% if current_user.is_authenticated %}
+        <div class="text-center pb-3">
+            <a href="{{ url_for('new_business') }}" class="btn btn-lg btn-success">Post Your Business</a>
+        </div>
+        {% endif %}
   </header>
 
   <div class="container-flud">

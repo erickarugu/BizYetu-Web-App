@@ -24,7 +24,7 @@
                             <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
                                 <div class="border"></div>
                                 <p>LATEST BUSINESS POST</p>
-                                <span class="text-center">{{ businesses.business_title }}...</span>
+                                <span class="text-center"><a class="text-info" href="{{ url_for('business', business_id=businesses.id) }}">{{ businesses.business_title }}...</a></span>
                             </div>
                             <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
                                 <div class="border"></div>
@@ -48,9 +48,12 @@
                                     <h1>{{ current_user.username }}</h1>
                                     <h5>{{ current_user.user_type }}</h5>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                                {% if current_user.is_authenticated %}
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth pb-2"> 
                                     <a href="{{ url_for('businesses') }}" class="btn btn-primary btn-block">View All Businesses</a>
+                                    <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i> Delete Account</a>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -198,6 +201,29 @@
             </div>
         </div>
     </div>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModal">Delete Account?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h3>{{ current_user.username }} - {{ current_user.user_type }}</h3>
+                    <p class="text-muted">Your {{ total_businesses }} business(es) will consequently be deleted including your latest <a class="text-info" href="{{ url_for('business', business_id=businesses.id) }}">{{ businesses.business_title }}...</a><p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <form action="{{ url_for('delete_account', user_id=current_user.id) }}" method="POST">
+                      <input type="submit" name="" class="btn btn-danger" value="Delete">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- The footer section -->
     <footer class="py-3">
         <div class="container text-center">

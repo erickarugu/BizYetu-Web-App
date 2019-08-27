@@ -1,17 +1,14 @@
 {% extends 'layout.html' %}
     {% block content %}
-      <svg viewbox="0 0 100 20">
-      <!-- <path fill="#F2FFB6" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" /> -->
-  </svg>
-            <div class="content-section container pt-4">
-                <div class="text-center">
+           <div class="content-section container pt-5 mt-5">
+                <div class="text-center pb-5">
                     <h2>Join Us Today</h2>
                 </div>
                 <form method="POST" action="">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
                         <div class="row">
-                        <div class="md-form mb-2 col-4">
+                        <div class="md-form mb-2 col-md-4">
                           <div class="form-group">
                                 <i class="fa fa-user"></i> {{ form.username.label(class="form-control-label")}}
 
@@ -27,7 +24,7 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="md-form mb-2 col-4">
+                        <div class="md-form mb-2 col-md-4">
                           <div class="form-group">
                                 <i class="fa fa-envelope"></i> {{ form.email.label(class="form-control-label")}}
 
@@ -43,7 +40,7 @@
                                 {% endif %}
                             </div>
                         </div>
-                           <div class="md-form mb-2 col-4">
+                           <div class="md-form mb-2 col-md-4">
                           <div class="form-group">
                                 <i class="fa fa-phone"></i> {{ form.email.label(class="form-control-label")}}
 
@@ -61,7 +58,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="md-form mb-2 col-4">
+                        <div class="md-form mb-2 col-md-4">
                           <div class="form-group">
                                 <i class="fa fa-tag"></i> {{ form.user_type.label(class="form-control-label")}}
 
@@ -78,7 +75,7 @@
 
                             </div>
                         </div>
-                        <div class="md-form mb-2 col-4">
+                        <div class="md-form mb-2 col-md-4">
                             <div class="form-group">
                                 <i class="fa fa-lock"></i> {{ form.password.label(class="form-control-label")}}
 
@@ -95,7 +92,7 @@
 
                             </div>
                         </div>
-                        <div class="md-form mb-2 col-4">
+                        <div class="md-form mb-2 col-md-4">
                                 <div class="form-group">
                                     <i class="fa fa-lock"></i> {{ form.confirm_password.label(class="form-control-label")}}
 
@@ -115,7 +112,7 @@
                     </div>
                         <div class="md-form mb-2 text-center mt-2">
                             <div class="form-group">
-                                {{ form.submit(class="btn btn-outline-success") }}
+                                {{ form.submit(class="btn btn-lg btn-outline-success") }}
                             </div>
                         </div>
                     </fieldset>
@@ -126,11 +123,4 @@
                         </small>
                 </div>
             </div>
-
-<!-- the footer section -->
-<footer class="py-3">
-  <div class="container text-center">
-    <p class="font-italic text-muted mb-0">&copy; Copyrights digitol.com All rights reserved.</p>
-  </div>
-</footer>
     {% endblock content %}

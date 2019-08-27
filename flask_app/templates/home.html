@@ -15,41 +15,41 @@
         </div>
       </div>
   </section>
-
 <!-- The businesses section -->
-    <div class="container">
+    <div class="container-fluid">
+      <div class="col-xm-12 col-sm-10">
         <div class="border-bottom border-info pt-2">
           <h1>
-            <small>Businesses - SME</small>
+            <small>Hot News <i class="fa fa-fire text-danger"></i></small>
           </h1>
         </div>
-          <div class="row mt-2">
-            {% for business in businesses %}
-            {% if business.business_category != 'SME' %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 business-cards">
-                  <div class="card h-100">
-                    <h5 class="card-title text-center pt-2">
-                        <a href="{{ url_for('business', business_id=business.id) }}" class="text-muted  border-bottom border-success pb-1">{{ business.business_title }}</a>
-                      </h5>
-                    <a href="#"><img class="card-img-top" src="{{ url_for('static', filename='profile_pics/' + business.business_owner.user_image_file) }}" alt=""></a>
-                    <div class="card-body">
-                        <div class="post-description border-bottom border-warning">
-                            <ul class="list-group">
-                                <li class="list-item">Date Posted:  {{ business.business_date_posted.strftime('%Y-%m-%d %H:%M %p') }}</li>
-                                <li class="list-item">Category: {{ business.business_category }}</li>
-                                <li class="list-item">Location: {{ business.business_location }}</li>
-                                <li class="list-item">Posted By: {{ business.business_owner.username}}</li>
-                            </ul>
-                        </div>
-                      <p class="card-text">{{ business.business_description }}
+      </div>
+          
+          <h1><small>Top Businesses <i class="fa fa-globe text-primary"></i></small></h1>
+        <div class="row">
+          {% for business in businesses %}
+              <div class="col-md-4 col-sm-4 pb-2">
+                <div class="card">
+                   <div class="bg-success p-2 text-light">
+                     <h5 class="card-title">{{ business.business_title }} </h5>
+                      <small class="float-right font-italic font-weight-light">{{ business.business_category }}, {{ business.business_location }}</small>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">{{ business.business_description }}</p>
+                    <div class="mb-1">
+                      <small class="text-muted">Posted on {{ business.business_date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                    <div class="text-muted mb-1 border-bottom border-success">
+                      <small class="text-muted">10 reviews</small>
+                    </div>
+                    <a href="#" class="text-primary">More ...</a>
+                    <a href="#" class="text-info">More ...</a>
                   </div>
                 </div>
-          </div> <!-- Row end -->
-          {% endif %}
+            </div>
           {% endfor %}
-    </div>
-  </div>
-<!-- /.container -->
+      </div>
+<!-- container -->
 
   <!-- Partners -->
   <section class="py-5">

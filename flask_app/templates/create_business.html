@@ -1,13 +1,14 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="content-section container col-md-8 pt-5">
-                <div class="text-center">
+        <div class="content-section container pt-5 mt-5">
+                <div class="text-center pb-5">
                     <h2>{{ legend }}</h2>
                 </div>
                 <form method="POST" action="">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
-                        <div class="md-form mb-2">
+                        <div class="row">
+                        <div class="md-form mb-2 col-4">
                           <div class="form-group">
                                 <i class="fa fa-user"></i> {{ form.business_title.label(class="form-control-label")}}
 
@@ -23,7 +24,7 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="md-form mb-2">
+                        <div class="md-form mb-2 col-4">
                           <div class="form-group">
                                 <i class="fa fa-envelope"></i> {{ form.email.label(class="form-control-label")}}
 
@@ -39,8 +40,10 @@
                                 {% endif %}
                             </div>
                         </div>
+                        <div class="md-form mb-2 col-4">
                         <div class="form-group">
                                 <i class="fa fa-comments"></i> {{ form.business_description.label(class="form-control-label")}}
+                                <small>(in about 3 statements)</small>
 
                                 {% if form.business_description.errors %}
                                     {{ form.business_description(class="form-control form-control-sm is-invalid")}}
@@ -54,7 +57,10 @@
                                 {% endif %}
 
                             </div>
-                        <div class="md-form mb-2">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="md-form mb-2 col-4">
                           <div class="form-group">
                                 <i class="fa fa-tag"></i> {{ form.business_category.label(class="form-control-label")}}
 
@@ -71,6 +77,7 @@
 
                             </div>
                         </div>
+                        <div class="md-form mb-2 col-4">
                         <div class="form-group">
                                 <i class="fa fa-map-marker"></i> {{ form.business_location.label(class="form-control-label")}}
 
@@ -86,6 +93,8 @@
                                 {% endif %}
 
                             </div>
+                        </div>
+                        <div class="md-form mb-2 col-4">
                             <div class="form-group">
                                 <i class="fa fa-phone"></i> {{ form.business_tel.label(class="form-control-label")}}
 
@@ -101,9 +110,11 @@
                                 {% endif %}
 
                             </div>
-                        <div class="md-form mb-2">
+                        </div>
+                        </div>
+                        <div class="md-form mb-2 text-center">
                             <div class="form-group">
-                                {{ form.submit(class="btn btn-outline-success") }}
+                                {{ form.submit(class="btn btn-lg btn-outline-success") }}
                             </div>
                         </div>
                     </fieldset>
