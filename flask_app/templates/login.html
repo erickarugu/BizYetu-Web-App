@@ -25,6 +25,9 @@
                             </div>
                             <div class="form-group">
                                 <i class="fa fa-lock"></i> {{ form.password.label(class="form-control-label")}}
+                                <small class="ml-5">
+                                    <a href="#" id="forgot-password">Forgot Password</a>
+                                </small>
 
                                 {% if form.password.errors %}passwordconfirm
                                     {{ form.password(class="form-control form-control-sm is-invalid")}}
@@ -41,12 +44,9 @@
                                 {{ form.remember(class="form-check-input") }}
                                 {{ form.remember.label(class="form-check-label") }}
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 {{ form.submit(class="btn btn-outline-info") }}
                             </div>
-                            <small class="ml-2">
-                                <a href="#" id="forgot-password">Forgot Password</a>
-                            </small>
                     </fieldset>
                 </form>
             </div>

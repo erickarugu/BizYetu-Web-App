@@ -173,12 +173,13 @@ def delete_business(business_id):
     flash('Your post has been deleted!')
     return redirect(url_for('home'))
 
+
 @app.route("/account/<int:user_id>/delete", methods=['GET', 'POST'])
 def delete_account(user_id):
     user = User.query.get_or_404(user_id)
     if user != current_user:
         abort(403)
-    for business in Business.query.filter_by( user_id=current_user.id).order_by(Business.business_date_posted.desc()).all():
+    for business in Business.query.filter_by(user_id=current_user.id).order_by(Business.business_date_posted.desc()).all():
         db.session.delete(business)
     db.session.delete(user)
     db.session.commit()
