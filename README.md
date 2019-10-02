@@ -15,6 +15,7 @@ Clone this app in your local machine. Run this command in your terminal/cmd/shel
         
     git clone https://github.com/erickarugu32/BizYetu-Web-App.git
 
+Navigate inside the BizYetu Web App folder.
 Install requirements. Run this command in your shell/terminal/cmd:
 
     pip install -r requirements.txt 
@@ -23,4 +24,4 @@ To run the app, run this command on your terminal/sell/cmd:
 
     python run.py
     
-Make sure to first navigate inside the Kam-App folder before running the command.
+Make sure to first navigate inside the BizYetu-Web-App folder before running the command.
