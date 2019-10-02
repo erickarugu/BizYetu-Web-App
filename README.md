@@ -1,4 +1,4 @@
-BizYetu Web App
+# BizYetu Web App
 
 An online platform that brings Business Owners and Customers together. 
 Created using the Flask-Python framework and bootstrap 4.
