@@ -1,0 +1,7 @@
+# Don't track content of these folders 
+venv/
+__pycache__
+
+
+#compiled sourcve #
+
